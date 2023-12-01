@@ -11,9 +11,11 @@ This repository contains the ENSEA micro shell project's code. The shell is name
 ### Question 1 : Displaying welcome message and simple prompt
 
 **Explanation:**
-- Define the constants 'welcome' and "enseash" to store respectively the welcome message and the prompt
-- Use the "write" function from the 'unistd.h' library to print messages to the standard out
+- Define the constants "welcome" and "enseash" to store respectively the welcome message and the prompt
+- Use the "write" function from the "unistd.h" library to print messages to the standard out
 
-### Question 2 : 
+### Question 2 : REPL implementation and commands execution
 
+**Explanation:**
+a) **
 
