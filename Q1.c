@@ -5,7 +5,7 @@
 #define welcome "Bienvenue dans le Shell ENSEA.\nPour quitter, tapez 'exit'.\n"
 #define enseash "enseash %\n"
 
-int main() {
+void q1() {
     write(STDOUT_FILENO, welcome, 59);
     write(STDOUT_FILENO, enseash, 10);
 }
