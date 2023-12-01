@@ -1,0 +1,3 @@
+/home/ensea/CLionProjects/YE_APP_LAB1/cmake-build-debug/CMakeFiles/YE_APP_LAB1.dir
+/home/ensea/CLionProjects/YE_APP_LAB1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ensea/CLionProjects/YE_APP_LAB1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
