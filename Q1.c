@@ -1,11 +1,13 @@
 #include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 
 #define welcome "Bienvenue dans le Shell ENSEA.\nPour quitter, tapez 'exit'.\n"
-#define enseash "enseash %\n"
+#define enseash "enseash % "
 
-void q1() {
+void start_prompt() {
     write(STDOUT_FILENO, welcome, 59);
+}
+
+void prompt() {
     write(STDOUT_FILENO, enseash, 10);
 }

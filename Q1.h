@@ -1,1 +1,2 @@
-int q1();
+void start_prompt();
+void prompt();
