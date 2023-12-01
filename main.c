@@ -2,5 +2,5 @@
 #include "Q2.h"
 
 int main() {
-    q1();
+    q2();
 }
