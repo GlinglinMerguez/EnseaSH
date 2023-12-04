@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 #include <time.h>
 
 #include "Q1.h"
@@ -37,9 +38,31 @@ void q7() {
 
             char *token = strtok(input, " ");
             while (token != NULL && argc < MAX_ARGS - 1) {
-                args[argc++] = token;
-                token = strtok(NULL, " ");
+                if (strcmp(token, ">") == 0 || strcmp(token, "<") == 0) {
+                    token = strtok(NULL, " ");
+
+                    int fd;
+                    if (strcmp(args[argc - 1], ">") == 0) {
+                        fd = open(token, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+                        dup2(fd, STDOUT_FILENO);
+                    }
+                    else if (strcmp(args[argc - 1], "<") == 0) {
+                        fd = open(token, O_RDONLY);
+                        if (fd == -1) {
+                            perror("open");
+                            exit(EXIT_FAILURE);
+                        }
+                        dup2(fd, STDIN_FILENO);
+                    }
+
+                    close(fd);
+                    token = strtok(NULL, " ");
+                } else {
+                    args[argc++] = token;
+                    token = strtok(NULL, " ");
+                }
             }
+
             args[argc] = NULL;
             execvp(args[0], args);
 
