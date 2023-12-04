@@ -30,17 +30,16 @@ void q4() {
             prompt();
         }
         else {
-            while ((pid = wait(&status)) != -1) {
-                if (WIFEXITED(status)) {
-                    char exit_status[30];
-                    int length = sprintf(exit_status, "enseash [exit:%d] %% ", WEXITSTATUS(status));
-                    write(STDOUT_FILENO, exit_status, length);
-                }
-                else if (WIFSIGNALED(status)) {
-                    char exit_status[30];
-                    int length = sprintf(exit_status, "enseash [sign:%d] %% ", WTERMSIG(status));
-                    write(STDOUT_FILENO, exit_status, length);
-                }
+            waitpid(pid, &status, 0);
+            if (WIFEXITED(status)) {
+                char exit_status[30];
+                int length = sprintf(exit_status, "enseash [exit:%d] %% ", WEXITSTATUS(status));
+                write(STDOUT_FILENO, exit_status, length);
+            }
+            else if (WIFSIGNALED(status)) {
+                char exit_status[30];
+                int length = sprintf(exit_status, "enseash [sign:%d] %% ", WTERMSIG(status));
+                write(STDOUT_FILENO, exit_status, length);
             }
         }
     }
