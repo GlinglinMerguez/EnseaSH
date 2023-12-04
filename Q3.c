@@ -19,7 +19,7 @@ void q3() {
         input[strcspn(input, "\n")] = '\0';
 
         if (strcmp(input, "exit") == 0) {
-            write(STDOUT_FILENO, "Goodbye.\n", 9);
+            write(STDOUT_FILENO, "Bye bye...\n", 9);
             break;
         }
 

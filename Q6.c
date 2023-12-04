@@ -9,7 +9,7 @@
 
 #define MAX_INPUT_SIZE 100
 
-void q5() {
+void q6() {
     char input[MAX_INPUT_SIZE];
     start_prompt();
     prompt();

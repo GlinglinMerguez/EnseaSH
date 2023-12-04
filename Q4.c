@@ -20,7 +20,7 @@ void q4() {
         input[strcspn(input, "\n")] = '\0';
 
         if (strcmp(input, "exit") == 0) {
-            write(STDOUT_FILENO, "Goodbye.\n", 9);
+            write(STDOUT_FILENO, "Bye bye...\n", 9);
             break;
         }
 
@@ -30,17 +30,17 @@ void q4() {
             prompt();
         }
         else {
-            while ((pid = wait(&status)) != -1) {
-                if (WIFEXITED(status)) {
-                    char exit_status[30];
-                    int length = snprintf(exit_status, sizeof(exit_status), "enseash [exit:%d] %% ", WEXITSTATUS(status));
-                    write(STDOUT_FILENO, exit_status, length);
-                }
-                else if (WIFSIGNALED(status)) {
-                    char exit_status[30];
-                    int length = snprintf(exit_status, sizeof(exit_status), "enseash [sign:%d] %% ", WTERMSIG(status));
-                    write(STDOUT_FILENO, exit_status, length);
-                }
+            waitpid(pid, &status, 0);
+
+            if (WIFEXITED(status)) {
+                char exit_status[30];
+                int length = sprintf(exit_status, "enseash [exit:%d] %% ", WEXITSTATUS(status));
+                write(STDOUT_FILENO, exit_status, length);
+            }
+            else if (WIFSIGNALED(status)) {
+                char exit_status[30];
+                int length = sprintf(exit_status, "enseash [sign:%d] %% ", WTERMSIG(status));
+                write(STDOUT_FILENO, exit_status, length);
             }
         }
     }
