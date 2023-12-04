@@ -17,5 +17,20 @@ This repository contains the ENSEA micro shell project's code. The shell is name
 ### Question 2 : REPL implementation and commands execution
 
 **Explanation:**
-a) **
+- The code implements a REPL for our shell program
+- Users can input commands at the prompt, and the shell will execute them
+- The entered command is executed in a child process using 'fork()' and 'execlp' 
+  - The 'fork()' function creates a new process by duplicating the calling process. It returns the process ID (PID) of the child process to the parent and 0 to the child
+  - The 'execlp()' function is then used in the child process to execute the entered command
+- The parent process waits for the child process to finish using the 'waitpid' function
 
+### Question3 : Shell termination with "exit" command ###
+
+**Explanation:**
+- If the user enters the command "exit", the shell print a "Goodbye" message and exits the loop
+- The loop continues to read commands until the "exit" command is encountered
+
+### Question 4 : ###
+
+**Explanation:**
+- The
