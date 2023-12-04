@@ -7,4 +7,6 @@ add_executable(YE_APP_LAB1 main.c
         Q2.c
         Q3.h
         Q4.c
-        Q4.h)
+        Q4.h
+        Q5.c
+        Q5.h)
