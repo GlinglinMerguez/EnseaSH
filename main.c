@@ -3,7 +3,8 @@
 #include "Q3.h"
 #include "Q4.h"
 #include "Q5.h"
+#include "Q6.h"
 
 int main() {
-    q5();
+    q6();
 }
