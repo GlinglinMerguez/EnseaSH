@@ -30,7 +30,14 @@ This repository contains the ENSEA micro shell project's code. The shell is name
 - If the user enters the command "exit", the shell print a "Goodbye" message and exits the loop
 - The loop continues to read commands until the "exit" command is encountered
 
-### Question 4 : ###
+### Question 4 : Displaying exit code of the previous command in the prompt ###
 
 **Explanation:**
-- The
+- After executing each command, the shell captures the exit status using the 'wait' system call
+- If the previous command exited normally, the shell displays [exit:<exit_code>] in the prompt
+- If the previous command was terminated by a signal, the shell displays [sign:<signal_number>] in the prompt
+
+### Question 5 : ###
+
+**Explanation:**
+- the
