@@ -8,6 +8,7 @@
 
 #define MAX_INPUT_SIZE 100
 
+
 void q4() {
     char input[MAX_INPUT_SIZE];
     start_prompt();
@@ -32,13 +33,13 @@ void q4() {
         else {
             waitpid(pid, &status, 0);
 
+            char exit_status[30];
+
             if (WIFEXITED(status)) {
-                char exit_status[30];
                 int length = sprintf(exit_status, "enseash [exit:%d] %% ", WEXITSTATUS(status));
                 write(STDOUT_FILENO, exit_status, length);
             }
             else if (WIFSIGNALED(status)) {
-                char exit_status[30];
                 int length = sprintf(exit_status, "enseash [sign:%d] %% ", WTERMSIG(status));
                 write(STDOUT_FILENO, exit_status, length);
             }

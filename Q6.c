@@ -8,6 +8,8 @@
 #include "Q1.h"
 
 #define MAX_INPUT_SIZE 100
+#define MAX_ARGS 20
+
 
 void q6() {
     char input[MAX_INPUT_SIZE];
@@ -36,15 +38,17 @@ void q6() {
         else {
             waitpid(pid, &status, 0);
 
+            char exit_status[50];
+
             clock_gettime(CLOCK_REALTIME, &end_time);
             if (WIFEXITED(status)) {
-                char exit_status[50];
-                int length = sprintf(exit_status, "enseash [exit:%d|%ldms] %% ", WEXITSTATUS(status), (end_time.tv_nsec - start_time.tv_nsec)/1000000);
+                long duration = (end_time.tv_nsec - start_time.tv_nsec)/1000000;
+                int length = sprintf(exit_status, "enseash [exit:%d|%ldms] %% ", WEXITSTATUS(status), duration);
                 write(STDOUT_FILENO, exit_status, length);
             }
             else if (WIFSIGNALED(status)) {
-                char exit_status[50];
-                int length = sprintf(exit_status, "enseash [sign:%d|%ldms] %% ", WTERMSIG(status), (end_time.tv_nsec - start_time.tv_nsec)/1000000);
+                long duration = (end_time.tv_nsec - start_time.tv_nsec)/1000000;
+                int length = sprintf(exit_status, "enseash [sign:%d|%ldms] %% ", WTERMSIG(status), duration);
                 write(STDOUT_FILENO, exit_status, length);
             }
         }
