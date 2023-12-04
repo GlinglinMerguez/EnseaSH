@@ -44,7 +44,18 @@ This repository contains the ENSEA micro shell project's code. The shell is name
 - After the command finishes, the shell records the end time and calculate the elapsed time
 - The shell then displays the exit code or signal along with the execution time in milliseconds in the prompt
 
-### Question 6 : ###
+### Question 6 : Execution of a complex command (with arguments) ###
 
 **Explanation:**
-- Be
+- Users can now enter commands with multiple arguments at the prompt
+- The shell uses 'execvp' function to execute the specified command with its arguments
+- Then we use the 'strtok' function : char *strtok(char *str, const char *delimiters). It allows the shell to break down strings entered by users into individual tokens, where each token represents a word or an argument in the command.
+- Functionality of strtok :
+  - split the input into tokens based on delimiters
+  - return a pointer to the first token in the input string on the initial call
+  - Subsequent calls with "NULL" as the first argument continue extracting tokens until there are no more tokens
+
+### Question 7 : ###
+
+**Explanation:**
+- Users
