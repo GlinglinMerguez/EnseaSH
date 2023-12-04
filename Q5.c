@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+
+#include "Q1.h"
+
+#define MAX_INPUT_SIZE 100
+
+void q4() {
+    char input[MAX_INPUT_SIZE];
+    start_prompt();
+    prompt();
+
+    while (1) {
+        int status;
+
+        read(STDIN_FILENO, input, sizeof(input));
+        input[strcspn(input, "\n")] = '\0';
+
+        if (strcmp(input, "exit") == 0) {
+            write(STDOUT_FILENO, "Goodbye.\n", 9);
+            break;
+        }
+
+        pid_t pid = fork();
+        if (pid == 0) {
+            execlp(input, input, NULL);
+            prompt();
+        }
+        else {
+            while ((pid = wait(&status)) != -1) {
+                if (WIFEXITED(status)) {
+                    char exit_status[30];
+                    int length = snprintf(exit_status, sizeof(exit_status), "enseash [exit:%d] %% ", WEXITSTATUS(status));
+                    write(STDOUT_FILENO, exit_status, length);
+                }
+                else if (WIFSIGNALED(status)) {
+                    char exit_status[30];
+                    int length = snprintf(exit_status, sizeof(exit_status), "enseash [sign:%d] %% ", WTERMSIG(status));
+                    write(STDOUT_FILENO, exit_status, length);
+                }
+            }
+        }
+    }
+}
