@@ -24,3 +24,13 @@ This repository contains the ENSEA micro shell project's code. The shell is name
   - The 'execlp()' function is then used in the child process to execute the entered command
 - The parent process waits for the child process to finish using the 'waitpid' function
 
+### Question3 : Shell termination with "exit" command ###
+
+**Explanation:**
+- If the user enters the command "exit", the shell print a "Goodbye" message and exits the loop
+- The loop continues to read commands until the "exit" command is encountered
+
+### Question 4 : ###
+
+**Explanation:**
+- The
