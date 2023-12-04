@@ -37,8 +37,14 @@ This repository contains the ENSEA micro shell project's code. The shell is name
 - If the previous command exited normally, the shell displays [exit:<exit_code>] in the prompt
 - If the previous command was terminated by a signal, the shell displays [sign:<signal_number>] in the prompt
 
-### Question 5 : ###
+### Question 5 : Measuring execution time of commands using 'clock_gettime' ###
 
 **Explanation:**
-- the
-- 
+- Before executing each command, the shell records the start time
+- After the command finishes, the shell records the end time and calculate the elapsed time
+- The shell then displays the exit code or signal along with the execution time in milliseconds in the prompt
+
+### Question 6 : ###
+
+**Explanation:**
+- Be
