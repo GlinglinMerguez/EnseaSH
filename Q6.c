@@ -32,7 +32,17 @@ void q6() {
 
         pid_t pid = fork();
         if (pid == 0) {
-            execlp(input, input, NULL);
+            char *args[MAX_ARGS];
+            int argc = 0;
+
+            char *token = strtok(input, " ");
+            while (token != NULL && argc < MAX_ARGS - 1) {
+                args[argc++] = token;
+                token = strtok(NULL, " ");
+            }
+            args[argc] = NULL;
+            execvp(args[0], args);
+
             prompt();
         }
         else {
