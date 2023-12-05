@@ -58,4 +58,8 @@ This repository contains the ENSEA micro shell project's code. The shell is name
 ### Question 7 : ###
 
 **Explanation:**
-- Users
+- We added support for redirections
+- Keeping the same system to tokenize the prompt we also check if there's a '<' or a '>'
+- if it's a '>' we're in write mode
+- if it's a '<' we're in the read mode
+- dup function allows us to switch to the file by duplicating the current 
