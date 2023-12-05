@@ -44,6 +44,10 @@ void q7() {
                     int fd;
                     if (strcmp(args[argc - 1], ">") == 0) {
                         fd = open(token, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+                        if (fd == -1) {
+                            perror("open");
+                            exit(EXIT_FAILURE);
+                        }
                         dup2(fd, STDOUT_FILENO);
                     }
                     else if (strcmp(args[argc - 1], "<") == 0) {
